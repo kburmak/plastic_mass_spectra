@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='plastic_spectra',
-    url='https://github.com/',
+    url='https://github.com/kburmak/plastic_mass_spectra',
     author='Karina Burmak',
     author_email='ksburmak@edu.hse.ru',
     packages=['plastic_spectra'],
