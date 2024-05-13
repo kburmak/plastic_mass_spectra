@@ -59,12 +59,13 @@ class plastic_spectra:
             data = [i.split(' ') for i in data]
             data = [[float(j) for j in i] for i in data]
             data = pd.DataFrame(data, columns = ['mz', 'intensity'])
-            filtered_data = pd.DataFrame(index = data.index)
-            for i, vals in data.items():
-                peaks, _ = fp(vals, threshold = threshold)
-                filtered_data[i+'_peaks'] = filtered_data.index.isin(peaks + data.index.min())
-                peak_filter = filtered_data.sum(axis = 1) >= 1
-            self.annotation[["mz","intensity"]] = data.loc[peak_filter]
+            # filtered_data = pd.DataFrame(index = data.index)
+            # for i, vals in data.items():
+            #     peaks, _ = fp(vals, threshold = threshold)
+            #     filtered_data[i+'_peaks'] = filtered_data.index.isin(peaks + data.index.min())
+            #     peak_filter = filtered_data.sum(axis = 1) >= 1
+            # self.annotation[["mz","intensity"]] = data.loc[peak_filter]
+            self.annotation[["mz","intensity"]] = data
 
 
     def __residue_search(self, mz, tolerance):
