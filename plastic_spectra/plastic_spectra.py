@@ -341,7 +341,7 @@ class generated_plastic:
                             # decoy fragment ions calculations
                             decoy_fragment_mz = (decoy_polym + m - so3na_loss - na_loss + so3_loss - monom_loss + e_mass * charge_state)/charge_state
                             decoy_charge_fragments.append(decoy_fragment_mz)
-                            decoy_fragment_labels.append(f'PSS{n-l}-mer — decoy: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {fragment_mz}; Isotopic error: {m}')
+                            decoy_fragment_labels.append(f'PSS{n_max-l}-mer — decoy: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {fragment_mz}; Isotopic error: {m}')
                             
                             # small ions calculations
                             small_mz = - (m + so3na_loss + na_loss - so3_loss + monom_loss - e_mass * charge_state)/charge_state
