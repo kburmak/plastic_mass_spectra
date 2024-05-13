@@ -294,7 +294,7 @@ class generated_plastic:
                 
 
 
-   def pss_gen(self, n = 60 , max_so3na = 5 , max_so3 = 5):
+    def pss_gen(self, n = 60 , max_so3na = 5 , max_so3 = 5):
         """Generates PSS plastic database
             n - number of monomers
             max_so3na - number of SO3Na losses
