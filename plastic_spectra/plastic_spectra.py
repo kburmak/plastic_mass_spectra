@@ -200,7 +200,7 @@ class plastic_spectra:
         plt.show()
      
         # combined spectra with random matches
-        if random_plot = True:
+        if random_plot == True:
             plt.figure(figsize = (30,10))
             
             plt.bar(data = self.annotation,
