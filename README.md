@@ -1,5 +1,8 @@
-# Installation
+# Install
 `pip install git+https://github.com/kburmak/plastic_mass_spectra.git`
+
+# Update
+`pip install --upgrade git+https://github.com/kburmak/plastic_mass_spectra.git`
 
 # Library structure
 
