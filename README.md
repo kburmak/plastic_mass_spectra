@@ -42,11 +42,11 @@
 - `filename`: name of the file.
 - `retention_time`: retention time of the spectra.
 - `threshold`: threshold for the `find_peaks` function.
-- `tolerance`: tolerance for matching theoretical and experimental m/z ratios.
+- `tolerance`: tolerance for matching theoretical and experimental *m/z* ratios.
 - `name`: name of spectra to save in database and load from it.
 - `title`: title for plots.
 
 ### Methods
 - `__init__`: initializes the class.
-- `__residue_search`: searches in the database based on m/z ratio and tolerance gap.
+- `__residue_search`: searches in the database based on *m/z* ratio and tolerance gap.
 - `__clean`: describe status of match in the annotation (whether random match or not).
