@@ -33,7 +33,7 @@
 ### Description
 `plastic_spectra` class contains five functions:
 - `read_spectra` function reads spectra from `.ms1` files based on the retention time, and cleans it based on the threshold.
-- `annotate_spectra` function annotates spectra based on the tolerance gap.
+- `annotate_spectra` function annotates spectra based on the tolerance rate.
 - `save_spectra` function saves spectra (annotated or not) with the proposed name.
 - `load_spectra` function loads chosen spectra from the database.
 - `plot_spectra` function plots spectra in three ways: experimental spectra, annotated experimental spectra with any random matches (decoy or not), and experimental spectra without random matches.
@@ -48,5 +48,5 @@
 
 ### Methods
 - `__init__`: initializes the class.
-- `__residue_search`: searches in the database based on *m/z* ratio and tolerance gap.
+- `__residue_search`: searches in the database based on *m/z* ratio and tolerance rate.
 - `__clean`: describe status of match in the annotation (whether random match or not).
