@@ -17,8 +17,7 @@
 `generated_spectra` class contains three functions: `pss_gen` and `pfas` gen, which generate fragment ions for PSS and PFAS plastics respectively based on their chemical structure; and `plastic_to_database` function, which stores generated fragments in the `residue` database.
 
 ### Parameters
-- `n_max`: maximum degree of polymerization.
-- `n_mim`: minimum degree of polymerization.
+- `n`: degree of polymerization.
 - `max_so3na`: number of SO<sub>3</sub>Na losses.
 - `max_so3`: number of SO<sub>3</sub> losses.
 
