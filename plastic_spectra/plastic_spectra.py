@@ -48,7 +48,7 @@ class plastic_spectra:
         self.annotation = pd.DataFrame(columns = ["mz", "intensity", "residue_id", "status", "plastic_name", "description","match_mz"])
 
     def read_spectra(self, filename = 'any.txt', retention_time = 0.111111, threshold = 0.5):
-        """This fuction reads spectras from txt,
+        """This fuction reads spectras from ms1 format files,
         filename - any.txt with experemental results,
         retention_time - retention time of spectra in file"""
         with open(filename) as f: 
