@@ -16,8 +16,8 @@
 ### Parameters
 - `n_max`: maximum degree of polymerization.
 - `n_mim`: minimum degree of polymerization.
-- `max_so3na`: number of SO<<sub>3<\sub>Na losses.
-- `max_so3`: number of SO<sub>3<\sub> losses.
+- `max_so3na`: number of SO <sub> 3 <\sub> Na losses.
+- `max_so3`: number of SO <sub> 3 <\sub> losses.
 
 - `n_c`: number of carbons.
 - `n_f`: number of fluorides.
