@@ -300,7 +300,7 @@ class generated_plastic:
             n_mim - minimum degree of polymerization,
             max_so3na - number of SO3Na losses
             max_so3 - number of SO3 losses"""
-        self.name = self.name + '_' + str(n)
+        self.name = self.name + '_' + str(n_max)
         elem_mass = self.elem_mass
         e_mass = self.e_mass
         n_mass = self.n_mass 
