@@ -59,13 +59,12 @@ class plastic_spectra:
             data = [i.split(' ') for i in data]
             data = [[float(j) for j in i] for i in data]
             data = pd.DataFrame(data, columns = ['mz', 'intensity'])
-            # filtered_data = pd.DataFrame(index = data.index)
-            # for i, vals in data.items():
-            #     peaks, _ = fp(vals, threshold = threshold)
-            #     filtered_data[i+'_peaks'] = filtered_data.index.isin(peaks + data.index.min())
-            #     peak_filter = filtered_data.sum(axis = 1) >= 1
-            # self.annotation[["mz","intensity"]] = data.loc[peak_filter]
-            self.annotation[["mz","intensity"]] = data
+            filtered_data = pd.DataFrame(index = data.index)
+            for i, vals in data.items():
+                peaks, _ = fp(vals, threshold = threshold)
+                filtered_data[i+'_peaks'] = filtered_data.index.isin(peaks + data.index.min())
+                peak_filter = filtered_data.sum(axis = 1) >= 1
+            self.annotation[["mz","intensity"]] = data.loc[peak_filter]
 
 
     def __residue_search(self, mz, tolerance):
@@ -296,22 +295,23 @@ class generated_plastic:
                 
 
 
-    def pss_gen(self, n = 60 , max_so3na = 5 , max_so3 = 5):
+    def pss_gen(self, n_max = 60 , n_loss = 21, max_so3na = 5 , max_so3 = 5):
         """Generates PSS plastic database
-            n - number of monomers
+            n_max - maximum number of monomers
+            n_loss - maximum loss of monomers
             max_so3na - number of SO3Na losses
             max_so3 -  number of SO3 losses"""
-        self.name = self.name + '_' + str(n)
+        self.name = self.name + '_' + str(n_max)
         elem_mass = self.elem_mass
         e_mass = self.e_mass
         n_mass = self.n_mass 
         
         # PSS mass calculation for actual polymer and its decoy
-        polymer_mass = (elem_mass['C'] * 8 + elem_mass['H'] * 7 + elem_mass['S'] * 1 + elem_mass['O'] * 3 + elem_mass['Na'] * 1) * n 
+        polymer_mass = (elem_mass['C'] * 8 + elem_mass['H'] * 7 + elem_mass['S'] * 1 + elem_mass['O'] * 3 + elem_mass['Na'] * 1) * n_max
         decoy_polym = polymer_mass + 1000
 
         # delta in case of 1% of isotops
-        delta_mass = round(n_mass * 0.01 * 8 * n)
+        delta_mass = round(n_mass * 0.01 * 8 * n_max)
         
         charge_fragments = [] # list of masses for fragment ions
         fragment_labels = [] # list of information about fragment ions
@@ -320,12 +320,12 @@ class generated_plastic:
         small_fragments = []
         small_labels = []
 
-        for i in range(1, n + 1): # list of possible na loss, depends on n
+        for i in range(1, n_max + 1): # list of possible na loss, depends on n
             for j in range(max_so3na + 1): # list of possible so3na loss
                 for k in range(max_so3 + 1): # list of possible so3 loss
-                    for l in range(21): # list of possible monomer units loss
+                    for l in range(n_loss): # list of possible monomer units loss
                         for m in range(delta_mass - 2, delta_mass + 2): # list of possible isotopic error
-                            if i + j > n or i + j - k <= 0: # sulphonate group lost but Na came back
+                            if i + j > n_max or i + j - k <= 0: # sulphonate group lost but Na came back
                                 continue
                             # mass loses calculations
                             na_loss = i * elem_mass['Na']
@@ -337,12 +337,12 @@ class generated_plastic:
                             # fragment ions calculations
                             fragment_mz = (polymer_mass + m - so3na_loss - na_loss + so3_loss - monom_loss + e_mass * charge_state)/charge_state
                             charge_fragments.append(fragment_mz) 
-                            fragment_labels.append(f'PSS {n-l}-mer: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {fragment_mz}; Isotopic error: {m}')
+                            fragment_labels.append(f'PSS {n_max-l}-mer: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {fragment_mz}; Isotopic error: {m}')
 
                             # decoy fragment ions calculations
                             decoy_fragment_mz = (decoy_polym + m - so3na_loss - na_loss + so3_loss - monom_loss + e_mass * charge_state)/charge_state
                             decoy_charge_fragments.append(decoy_fragment_mz)
-                            decoy_fragment_labels.append(f'PSS{n-l}-mer — decoy: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {fragment_mz}; Isotopic error: {m}')
+                            decoy_fragment_labels.append(f'PSS{n_max-l}-mer — decoy: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {fragment_mz}; Isotopic error: {m}')
                             
                             # small ions calculations
                             small_mz = - (m + so3na_loss + na_loss - so3_loss + monom_loss - e_mass * charge_state)/charge_state
