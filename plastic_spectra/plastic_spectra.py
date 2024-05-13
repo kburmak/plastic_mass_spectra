@@ -324,7 +324,7 @@ class generated_plastic:
                 for k in range(max_so3 + 1): # list of possible so3 loss
                     for l in range(n_min): # list of possible monomer units loss
                         for m in range(delta_mass - 2, delta_mass + 2): # list of possible isotopic error
-                            if i + j > n or i + j - k <= 0: # sulphonate group lost but Na came back
+                            if i + j > n_max or i + j - k <= 0: # sulphonate group lost but Na came back
                                 continue
                             # mass loses calculations
                             na_loss = i * elem_mass['Na']
