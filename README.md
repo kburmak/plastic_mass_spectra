@@ -27,7 +27,7 @@
 - `n_h`: number of hydrogens.
 
 ### Methods
-`__init__`: initializes the class.
+- `__init__`: initializes the class.
 
 ## Downloading experimental spectra, their annotation and plotting
 ### Description
