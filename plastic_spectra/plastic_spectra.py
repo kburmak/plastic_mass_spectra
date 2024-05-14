@@ -180,7 +180,7 @@ class plastic_spectra:
     def plot_spectra(self, title = 'Annotation results', random_plot = False):    
         """Plots your spectra"""
         self.annotation = self.annotation.reset_index(drop = True)
-        annotation['color'] = ['black' for i in range(annotation.shape[0])]
+        self.annotation['color'] = ['black' for i in range(annotation.shape[0])]
         
         for i in range(self.annotation.shape[0]):
             if self.annotation['status'].iloc[i] == 'Match':
