@@ -9,8 +9,8 @@
 ## Database creation
 `create_database` function creates `plastic_spectrum` database with three tables:
 - `plastic` table, containing information about plastics' names;
-- `spectra` table, containing information about spectra: plastic name, name of annotated fragment ion, \emph{m/z} ratio, peak intensity, (whether this ion generated on decoy step or not);
-- `residue` table, containing information about fragment ions: plastic name, name of fragment ion, its \emph{m/z} ratio, and decoy status (whether this ion generated on decoy step or not).
+- `spectra` table, containing information about spectra: plastic name, name of annotated fragment ion, *m/z* ratio, peak intensity, (whether this ion generated on decoy step or not);
+- `residue` table, containing information about fragment ions: plastic name, name of fragment ion, its *m/z* ratio, and decoy status (whether this ion generated on decoy step or not).
 
 ## Generation of fragment ions
 ### Description
