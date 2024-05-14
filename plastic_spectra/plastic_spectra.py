@@ -206,8 +206,8 @@ class plastic_spectra:
         
         plt.xlabel(r'$m/z$', size = 30)
         plt.ylabel(r'$Intensity$', size = 30)
-        plt.xticks(fontsize = 30)
-        plt.yticks(fontsize = 30)
+        plt.xticks(fontsize = 20)
+        plt.yticks(fontsize = 20)
         plt.grid(True, axis = 'y', color = 'black', linestyle = ':', linewidth = 0.1)
         plt.title(f'{title}, experimental spectra: total experimental peaks — {exp_peaks}', size = 20)
         plt.show()
@@ -229,8 +229,8 @@ class plastic_spectra:
             
             plt.xlabel(r'$m/z$', size = 30)
             plt.ylabel(r'$Intensity$', size = 30)
-            plt.xticks(fontsize = 30)
-            plt.yticks(fontsize = 30)
+            plt.xticks(fontsize = 20)
+            plt.yticks(fontsize = 20)
             plt.grid(True, axis = 'y', color = 'black', linestyle = ':', linewidth = 0.1)
             plt.title(f'{title}, combined spectra with random matches: total experimental peaks — {exp_peaks}, total theoretical peaks — {theor_peaks}, total decoy peaks — {decoy_peaks}', size = 20)
             plt.show()
@@ -252,8 +252,8 @@ class plastic_spectra:
         
         plt.xlabel(r'$m/z$', size = 30)
         plt.ylabel(r'$Intensity$', size = 30)
-        plt.xticks(fontsize = 30)
-        plt.yticks(fontsize = 30)
+        plt.xticks(fontsize = 20)
+        plt.yticks(fontsize = 20)
         plt.grid(True, axis = 'y', color = 'black', linestyle = ':', linewidth = 0.1)
         plt.legend(loc = 'center left', bbox_to_anchor = (1, 0.5), fontsize = 20)
         plt.title(f'{title}, combined spectra without random matches: total experimental peaks — {exp_peaks}, total matching peaks — {match_peaks}', size = 20)
