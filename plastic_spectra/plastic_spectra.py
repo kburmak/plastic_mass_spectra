@@ -353,19 +353,19 @@ class generated_plastic:
                             charge_state = i + j - k # charge state is equal to i + j - k
                             
                             # fragment ions calculations
-                            fragment_mz = (polymer_mass + m - so3na_loss - na_loss + so3_loss - monom_loss + e_mass * charge_state)/charge_state
+                            fragment_mz = round((polymer_mass + m - so3na_loss - na_loss + so3_loss - monom_loss + e_mass * charge_state)/charge_state, 4)
                             charge_fragments.append(fragment_mz) 
-                            fragment_labels.append(f'PSS {n_max-l}-mer: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {round(fragment_mz, 4)}; Isotopic error: {m}')
+                            fragment_labels.append(f'PSS {n_max-l}-mer: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {fragment_mz}; Isotopic error: {m}')
 
                             # decoy fragment ions calculations
-                            decoy_fragment_mz = (decoy_polym + m - so3na_loss - na_loss + so3_loss - monom_loss + e_mass * charge_state)/charge_state
+                            decoy_fragment_mz = round((decoy_polym + m - so3na_loss - na_loss + so3_loss - monom_loss + e_mass * charge_state)/charge_state, 4)
                             decoy_charge_fragments.append(decoy_fragment_mz)
-                            decoy_fragment_labels.append(f'PSS{n_max-l}-mer — decoy: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {round(fragment_mz, 4)}; Isotopic error: {m}')
+                            decoy_fragment_labels.append(f'PSS{n_max-l}-mer — decoy: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {decoy_fragment_mz}; Isotopic error: {m}')
                             
                             # small ions calculations
-                            small_mz = - (m + so3na_loss + na_loss - so3_loss + monom_loss - e_mass * charge_state)/charge_state
+                            small_mz = round(- (m + so3na_loss + na_loss - so3_loss + monom_loss - e_mass * charge_state)/charge_state, 4)
                             small_fragments.append(small_mz)
-                            small_labels.append(f'Charge: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {round(small_mz, 4)}; Isotopic error: {m}')
+                            small_labels.append(f'Charge: {j} SO\u2083Na, {i} Na, {k} SO\u2083; Charge: {charge_state}; Peak(m/z): {small_mz}; Isotopic error: {m}')
 
         labels = fragment_labels + decoy_fragment_labels + small_labels
         fragments = charge_fragments + decoy_charge_fragments + small_fragments
@@ -410,16 +410,16 @@ class generated_plastic:
                         so3k_loss = j * (elem_mass['K'] * 1 + elem_mass['S'] * 1 + elem_mass['O'] * 3)
                         so3_loss = k * (elem_mass['S'] * 1 + elem_mass['O'] * 3)
                         charge_state = i + j - k # charge state is equal to i + j - k
-                        fragment_mz = (pfas - so3k_loss - k_loss + so3_loss + e_mass * charge_state)/charge_state
-                        adduct_mass = pfas * 2 - i * elem_mass['K']
+                        fragment_mz = round((pfas - so3k_loss - k_loss + so3_loss + e_mass * charge_state)/charge_state, 4)
+                        adduct_mass = round((pfas * 2 - i * elem_mass['K']), 4)
                         charge_fragments.append(fragment_mz)
                         charge_fragments.append(adduct_mass)
                         charge_fragments.append(so3k_loss) 
                         charge_fragments.append(so3_loss)
                         charge_fragments.append(k_loss)
-                        fragment_labels.append(f'{i} K, {j} SO\u2083K, {k} SO\u2083 are lost; Charge: {charge_state}; Peak (m/z): {round(fragment_mz, 4)}')
+                        fragment_labels.append(f'{i} K, {j} SO\u2083K, {k} SO\u2083 are lost; Charge: {charge_state}; Peak (m/z): {fragment_mz}')
                         decoy_status.append(0)
-                        fragment_labels.append(f'Adduct\'s formula C{n_c * 2}F{n_f * 2}K{n_k}S{n_s * 2}O{n_o * 2}H{n_h * 2}: ; Peak (m/z): {round(adduct_mass, 4)}')
+                        fragment_labels.append(f'Adduct\'s formula C{n_c * 2}F{n_f * 2}K{n_k}S{n_s * 2}O{n_o * 2}H{n_h * 2}: ; Peak (m/z): {adduct_mass}')
                         decoy_status.append(0)
                         fragment_labels.append(f'Fragment\'s formula K{n_k}S{n_s * 2}O{n_o * 2}:; Peak (m/z): {round(so3k_loss, 4)}')
                         decoy_status.append(0)
@@ -433,13 +433,13 @@ class generated_plastic:
                     continue
                 h_loss = i * elem_mass['H']
                 charge_state = i
-                fragment_mz = (pfas - h_loss + e_mass * charge_state)/charge_state
-                adduct_mass = pfas * 2 - i * elem_mass['H']
+                fragment_mz = round((pfas - h_loss + e_mass * charge_state)/charge_state, 4)
+                adduct_mass = round((pfas * 2 - i * elem_mass['H']), 4)
                 charge_fragments.append(fragment_mz)
                 charge_fragments.append(adduct_mass)
-                fragment_labels.append(f'{i} H are lost; Charge: {charge_state}; Peak (m/z): {round(fragment_mz, 4)}')
+                fragment_labels.append(f'{i} H are lost; Charge: {charge_state}; Peak (m/z): {fragment_mz}')
                 decoy_status.append(0)
-                fragment_labels.append(f'Adduct\'s formula C{n_c * 2}F{n_f * 2}O{n_o * 2}H{n_h * 2}; Charge: {charge_state}; Peak (m/z): {round(adduct_mass, 4)}')
+                fragment_labels.append(f'Adduct\'s formula C{n_c * 2}F{n_f * 2}O{n_o * 2}H{n_h * 2}; Charge: {charge_state}; Peak (m/z): {adduct_mass}')
                 decoy_status.append(0)
 
         generated_fragments = pd.DataFrame(zip(fragment_labels, charge_fragments, decoy_status), columns = ['name', 'm/z', 'decoy_status'])
