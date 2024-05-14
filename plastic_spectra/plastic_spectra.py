@@ -209,6 +209,7 @@ class plastic_spectra:
         plt.grid(True, axis = 'y', color = 'black', linestyle = ':', linewidth = 0.1)
         plt.title(f'{title}, experimental spectra: total experimental peaks — {exp_peaks}', size = 20)
         plt.show()
+        plt.savefig(f'{title}_experimental_spectra.png')
         
         # combined spectra with random matches
         if random_plot == True:
@@ -230,6 +231,7 @@ class plastic_spectra:
             plt.grid(True, axis = 'y', color = 'black', linestyle = ':', linewidth = 0.1)
             plt.title(f'{title}, combined spectra with random matches: total experimental peaks — {exp_peaks}, total theoretical peaks — {theor_peaks}, total decoy peaks — {decoy_peaks}', size = 20)
             plt.show()
+            plt.savefig(f'{title}_experimental_spectra_with_random_matches.png')
         
         # combined spectra without random matches
         plt.figure(figsize = (30,10))
@@ -252,6 +254,7 @@ class plastic_spectra:
         plt.legend(loc = 'center left', bbox_to_anchor = (1, 0.5))
         plt.title(f'{title}, combined spectra without random matches: total experimental peaks — {exp_peaks}, total matching peaks — {match_peaks}', size = 20)
         plt.show()
+        plt.savefig(f'{title}_experimental_spectra_without_random_matches.png')
 
 
 
