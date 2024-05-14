@@ -255,7 +255,7 @@ class plastic_spectra:
         plt.xticks(fontsize = 20)
         plt.yticks(fontsize = 20)
         plt.grid(True, axis = 'y', color = 'black', linestyle = ':', linewidth = 0.1)
-        plt.legend(loc = 'center left', bbox_to_anchor = (1, 0.5), fontsize = 20)
+        plt.legend(loc = 'center left', bbox_to_anchor = (1, 0.5), fontsize = 15)
         plt.title(f'{title}, combined spectra without random matches: total experimental peaks — {exp_peaks}, total matching peaks — {match_peaks}', size = 20)
         plt.show()
 
