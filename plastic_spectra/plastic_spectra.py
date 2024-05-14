@@ -179,7 +179,14 @@ class plastic_spectra:
     
     def plot_spectra(self, title = 'Annotation results', random_plot = False):    
         """Plots your spectra"""
-        self.annotation['color'] = ['green' for i in range(self.annotation.shape[0]) if self.annotation['status'][i] == 'Match' else 'red']
+        self.annotation = self.annotation.reset_index(drop = True)
+        for i in range(annotation.shape[0]):
+            if annotation['status'].iloc[i] == 'Match':
+                annotation['color'].iloc[i] = 'darkgreen'
+            elif annotation['status'].iloc[i] == 'Random match':
+                annotation['color'].iloc[i] = 'navy'
+            else:
+                annotation['color'].iloc[i] = 'maroon'
         exp_peaks = self.annotation.shape[0]
         theor_peaks = self.annotation[self.annotation['status'] != 'No matches'].shape[0]
         decoy_peaks = self.annotation[(self.annotation['status'] == 'Random match') | (self.annotation['status'] == 'Possibility of random match')].shape[0]
@@ -187,8 +194,8 @@ class plastic_spectra:
 
         # experimental spectra
         plt.figure(figsize = (30,10))
-        
-        plt.bar(data = self.annotation,
+                
+        plt.bar(data = annotation,
                 x = 'mz',
                 height = 'intensity',
                 color = "black",
@@ -199,21 +206,20 @@ class plastic_spectra:
         plt.grid(True, axis = 'y', color = 'black', linestyle = ':', linewidth = 0.1)
         plt.title(f'{title}, experimental spectra: total experimental peaks — {exp_peaks}', size = 20)
         plt.show()
-     
+        
         # combined spectra with random matches
         if random_plot == True:
             plt.figure(figsize = (30,10))
             
-            plt.bar(data = self.annotation,
+            plt.bar(data = annotation,
                     x = 'mz',
                     height = 'intensity',
                     color = "black",
                     linewidth = 0.8)
-            plt.bar(data = self.annotation[self.annotation['status'].isin(['Match', 'Random match', 'Possibility of random match'])],
+            plt.bar(data = annotation[annotation['status'].isin(['Match', 'Random match', 'Possibility of random match'])],
                     x = 'match_mz',
                     height =  'intensity',
                     color = 'color',
-                    label = 'description',
                     linewidth = 0.05)        
             
             plt.xlabel(r'$m/z$', size = 15)
@@ -221,19 +227,19 @@ class plastic_spectra:
             plt.grid(True, axis = 'y', color = 'black', linestyle = ':', linewidth = 0.1)
             plt.title(f'{title}, combined spectra with random matches: total experimental peaks — {exp_peaks}, total theoretical peaks — {theor_peaks}, total decoy peaks — {decoy_peaks}', size = 20)
             plt.show()
-
+        
         # combined spectra without random matches
         plt.figure(figsize = (30,10))
         
-        plt.bar(data = self.annotation,
+        plt.bar(data = annotation,
                 x = 'mz',
                 height = 'intensity',
                 color = "black",
                 linewidth = 0.8)
-        plt.bar(data = self.annotation[self.annotation['status'] == 'Match'],
+        plt.bar(data = annotation[annotation['status'] == 'Match'],
                 x = 'match_mz',
                 height = 'intensity',
-                color = 'green',
+                color = 'color',
                 label = 'description',
                 linewidth = 0.05)    
         
