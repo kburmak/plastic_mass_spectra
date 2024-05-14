@@ -202,7 +202,7 @@ class plastic_spectra:
                 x = 'mz',
                 height = 'intensity',
                 color = 'black',
-                linewidth = 2)
+                linewidth = 3)
         
         plt.xlabel(r'$m/z$', size = 30)
         plt.ylabel(r'$Intensity$', size = 30)
@@ -220,12 +220,12 @@ class plastic_spectra:
                     x = 'mz',
                     height = 'intensity',
                     color = 'black',
-                    linewidth = 2)
+                    linewidth = 3)
             plt.bar(data = self.annotation[self.annotation['status'].isin(['Match', 'Random match', 'Possibility of random match'])],
                     x = 'match_mz',
                     height = 'intensity',
                     color = 'color',
-                    linewidth = 2)        
+                    linewidth = 3)        
             
             plt.xlabel(r'$m/z$', size = 30)
             plt.ylabel(r'$Intensity$', size = 30)
@@ -242,13 +242,13 @@ class plastic_spectra:
                 x = 'mz',
                 height = 'intensity',
                 color = 'black',
-                linewidth = 2)
+                linewidth = 3)
         plt.bar(data = self.annotation[self.annotation['status'] == 'Match'],
                 x = 'match_mz',
                 height = 'intensity',
                 color = 'color',
                 label = 'description',
-                linewidth = 2)    
+                linewidth = 3)    
         
         plt.xlabel(r'$m/z$', size = 30)
         plt.ylabel(r'$Intensity$', size = 30)
