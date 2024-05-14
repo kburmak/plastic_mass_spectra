@@ -196,7 +196,7 @@ class plastic_spectra:
         match_peaks = self.annotation[self.annotation['status'] == 'Match'].shape[0]
 
         # experimental spectra
-        plt.figure(figsize = (30,10))
+        plt.figure(figsize = (30,15))
                 
         plt.bar(data = self.annotation,
                 x = 'mz',
@@ -214,7 +214,7 @@ class plastic_spectra:
         
         # combined spectra with random matches
         if random_plot == True:
-            plt.figure(figsize = (30,10))
+            plt.figure(figsize = (30,15))
             
             plt.bar(data = self.annotation,
                     x = 'mz',
@@ -236,7 +236,7 @@ class plastic_spectra:
             plt.show()
         
         # combined spectra without random matches
-        plt.figure(figsize = (30,10))
+        plt.figure(figsize = (30,15))
         
         plt.bar(data = self.annotation,
                 x = 'mz',
