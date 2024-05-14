@@ -187,6 +187,7 @@ class plastic_spectra:
                 self.annotation['color'].iloc[i] = 'navy'
             else:
                 self.annotation['color'].iloc[i] = 'maroon'
+                
         exp_peaks = self.annotation.shape[0]
         theor_peaks = self.annotation[self.annotation['status'] != 'No matches'].shape[0]
         decoy_peaks = self.annotation[(self.annotation['status'] == 'Random match') | (self.annotation['status'] == 'Possibility of random match')].shape[0]
@@ -239,7 +240,7 @@ class plastic_spectra:
         plt.bar(data = self.annotation[self.annotation['status'] == 'Match'],
                 x = 'match_mz',
                 height = 'intensity',
-                color = 'color',
+                color = 'darkgreen',
                 label = 'description',
                 linewidth = 0.05)    
         
