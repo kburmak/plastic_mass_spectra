@@ -18,7 +18,7 @@
 
 ### Parameters
 - `n_max`: degree of polymerization.
-- - `n_loss`: maximum changing of degree of polymerization.
+- `n_loss`: maximum changing of degree of polymerization.
 - `max_so3na`: number of SO<sub>3</sub>Na losses.
 - `max_so3`: number of SO<sub>3</sub> losses.
 
