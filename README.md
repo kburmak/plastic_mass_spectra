@@ -52,4 +52,4 @@
 ### Methods
 - `__init__`: initializes the class.
 - `__residue_search`: searches in the database based on *m/z* ratio and tolerance rate.
-- `__clean`: describe status of match in the annotation (whether random match or not).
+- `__clean`: describes status of match in the annotation (whether random match or not).
